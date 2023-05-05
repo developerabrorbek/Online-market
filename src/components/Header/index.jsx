@@ -14,7 +14,7 @@ const Header = () => {
             <img src={BasketImage} alt="Basket" />
           </div>
           <div className="menu">
-            <img src={MenuImage} alt="" />
+            <img src={MenuImage} alt="Burger image" />
           </div>
         </div>
       </nav>
