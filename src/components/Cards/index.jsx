@@ -2,12 +2,12 @@ import HeartIcon from "../../assets/favorite.svg";
 
 export const ProductCard = ({ product }) => {
   return (
-    <div className="card w-[379px] bg-white rounded-[30px] shadow-sm p-6">
-      <div className="card-images relative mb-4">
+    <div className="card bg-white rounded-[30px] shadow-sm p-6">
+      <div className="card-images relative flex justify-center mb-6">
         <img
           src={product.image}
           alt="Product image"
-          className="w-[329px] h-[320px]"
+          className="h-[250px]"
         />
         <img
           src={HeartIcon}
@@ -16,7 +16,9 @@ export const ProductCard = ({ product }) => {
         />
       </div>
       <div className="card-body flex justify-between items-center">
-        <h4 className="card-title max-w-[75%] h-[48px] overflow-hidden">{product.title}</h4>
+        <h4 className="card-title max-w-[75%] h-[48px] overflow-hidden">
+          {product.title}
+        </h4>
         <p className="price">{product.price} $</p>
       </div>
     </div>
@@ -30,11 +32,13 @@ export const SingleCard = ({ product }) => {
         <img
           src={product.image}
           alt="Product image"
-          className="w-[256px] h-[280px]"
+          className=" h-[240px]"
         />
       </div>
       <div className="card-body flex justify-between items-center">
-        <h4 className="card-title text-center h-[48px] overflow-hidden">{product.title}</h4>
+        <h4 className="card-title text-center h-[48px] overflow-hidden">
+          {product.title}
+        </h4>
       </div>
     </div>
   );

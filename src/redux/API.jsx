@@ -21,4 +21,4 @@ export const storeApi = createApi({
     })
 })
 
-export const {useGetProductsQuery, useGetSingleProductQuery, useDetCategoriesQuery, useGetProductsByCategoryQuery} = storeApi;
+export const {useGetProductsQuery, useGetSingleProductQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery} = storeApi;

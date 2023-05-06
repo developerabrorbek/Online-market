@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contacts from "./pages/Contacts";
 import Error from "./pages/Error";
@@ -11,18 +12,21 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Routes>
-        <Route element={<Home/>} path="/"/>
-        <Route element={<Contacts/>} path="/contacts"/>
-        <Route element={<Order/>} path="/ordering"/>
-        <Route element={<Products/>} path="/products"/>
-        <Route element={<ServiceRequirements/>} path="/service-requirements"/>
-        <Route element={<SingleProduct/>} path="/single-product/:id"/>
-        <Route element={<Error/>} path="*"/>
-      </Routes>
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Contacts />} path="/contacts" />
+          <Route element={<Order />} path="/ordering" />
+          <Route element={<Products />} path="/products" />
+          <Route
+            element={<ServiceRequirements />}
+            path="/service-requirements"
+          />
+          <Route element={<SingleProduct />} path="/single-product/:id" />
+          <Route element={<Error />} path="*" />
+        </Routes>
       </BrowserRouter>
     </>
   );
 };
 
-export default App;
+export default memo(App);
