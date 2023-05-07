@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 const Contacts = () => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
   window.addEventListener("resize", () => {
     setWidth(window.innerWidth);
   });
@@ -52,30 +52,51 @@ const Contacts = () => {
             <ul className="socials grid grid-cols-2 lg:grid-cols-1 lg:m-0 place-items-center lg:place-items-start justify-between  gap-y-4 mt-6">
               <li className="whatsup rounded-[30px]  bg-white p-12 lg:p-8 flex self-center justify-center  items-center">
                 <a href="#">
-                  <img src={Whatsup} alt="Whatsup" className="w-[68px] lg:w-[40px]" />
+                  <img
+                    src={Whatsup}
+                    alt="Whatsup"
+                    className="w-[68px] lg:w-[40px]"
+                  />
                 </a>
               </li>
               <li className="instagram rounded-[30px] bg-white p-12 lg:p-8 flex justify-center   items-center">
                 <a href="#">
-                  <img src={Instagram} alt="instagram" className="w-[68px] lg:w-[40px]" />
+                  <img
+                    src={Instagram}
+                    alt="instagram"
+                    className="w-[68px] lg:w-[40px]"
+                  />
                 </a>
               </li>
               <li className="telegram rounded-[30px] bg-white p-12 lg:p-8 flex justify-center   items-center">
                 <a href="#">
-                  <img src={Telegram} alt="Telegram" className="w-[68px] lg:w-[40px]" />
+                  <img
+                    src={Telegram}
+                    alt="Telegram"
+                    className="w-[68px] lg:w-[40px]"
+                  />
                 </a>
               </li>
               <li className="wk  rounded-[30px] bg-white px-12 lg:p-8 py-14 lg:py-10 flex justify-center   items-center">
                 <a href="#">
-                  <img src={WK} alt="Wk image" className="w-[68px] lg:w-[40px]" />
+                  <img
+                    src={WK}
+                    alt="Wk image"
+                    className="w-[68px] lg:w-[40px]"
+                  />
                 </a>
               </li>
             </ul>
             <div className="phone flex items-center justify-center lg:justify-start mt-8">
-                <a href="tel:7 777 777 77 77" className="flex items-center gap-x-3">
-                    <img src={phone} alt="phone-icon" />
-                    <p className="font-bold text-[20px] leading-6">+7 777 777 77 77</p>
-                </a>
+              <a
+                href="tel:7 777 777 77 77"
+                className="flex items-center gap-x-3"
+              >
+                <img src={phone} alt="phone-icon" />
+                <p className="font-bold text-[20px] leading-6">
+                  +7 777 777 77 77
+                </p>
+              </a>
             </div>
           </div>
         </div>

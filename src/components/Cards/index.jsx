@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import HeartIcon from "../../assets/favorite.svg";
 
 export const ProductCard = ({ product }) => {
   return (
-    <div className="card bg-white rounded-[30px] shadow-sm p-6">
+    <Link to={`single-product/${product.id}`} className="card block bg-white rounded-[30px] shadow-sm p-6">
       <div className="card-images relative flex justify-center mb-6">
         <img
           src={product.image}
@@ -21,13 +22,13 @@ export const ProductCard = ({ product }) => {
         </h4>
         <p className="price">{product.price} $</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export const SingleCard = ({ product }) => {
   return (
-    <div className="card flex justify-center flex-col items-center bg-white rounded-[30px] shadow-sm p-6">
+    <Link to={`single-product/${product.id}`} className="card flex justify-center flex-col items-center bg-white rounded-[30px] shadow-sm p-6">
       <div className="card-images relative mb-4">
         <img
           src={product.image}
@@ -40,6 +41,6 @@ export const SingleCard = ({ product }) => {
           {product.title}
         </h4>
       </div>
-    </div>
+    </Link>
   );
 };
