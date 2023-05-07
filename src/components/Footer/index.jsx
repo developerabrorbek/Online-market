@@ -4,7 +4,7 @@ import LanguageIcon from "../../assets/language.svg";
 const Footer = () => {
   return (
     <footer className="footer mt-8">
-      <div className="container mx-auto px-6 max-w-[1110px]">
+      <div className="container mx-auto  max-w-[1110px]">
         <div className="footer__inner bg-white rounded-t-[30px] px-7 py-8">
           <ul className="footer-items grid md:grid-cols-4  items-center  md:items-start justify-center md:justify-between gap-y-6 md:gap-x-4">
             <li className="footer-item">

@@ -8,8 +8,15 @@ import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import { useGetSingleProductQuery } from "../../redux/API";
 import Error from "../Error";
+import { useDispatch,} from "react-redux";
+import { addProduct } from "../../redux/slice";
 
 const SingleProduct = () => {
+  const dispatch = useDispatch()
+function addtoBasketHandler(product){
+  dispatch(addProduct(product))
+}
+
   const { id } = useParams();
   const [width, setWidth] = useState(window.innerWidth);
   const { data: product, isLoading, isError } = useGetSingleProductQuery(id);
@@ -92,13 +99,14 @@ const SingleProduct = () => {
                 >
                   Buy!
                 </Link>
-                <Link
-                  to="/basket"
+                <button
+                onClick={()=> addtoBasketHandler(product)}
+                  
                   className="bg-[#101010] flex items-center justify-center gap-x-4 shadow rounded-[10px] text-white text-center py-[13px] w-[255px]"
                 >
                   <img src={basket} alt="Basket" />
                   <p className="text text-white">Add to basket</p>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
