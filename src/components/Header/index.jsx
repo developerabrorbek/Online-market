@@ -15,8 +15,8 @@ const Header = () => {
             <img src={SiteLogo} alt="site-logo" />
           </a>
           <form action="#" className="hidden md:block">
-            <select name="category" id="categories"  className="bg-gray-50 border px-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-              <option value="0" hidden>Select by category</option>
+            <select name="category" id="categories"  className="bg-gray-50 border pe-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+              <option value="0" hidden>Select products by category</option>
               {categories && categories.map((category,index)=>{
                 return <option key={index}>{category}</option>
               })}
