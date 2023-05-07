@@ -8,6 +8,7 @@ import promo from "../../assets/promocode.svg";
 import LocationImage from "../../assets/locaiton.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+// import Map from "../../components/Map";
 
 const Order = () => {
   const { basketArr, basketCartTotalAmount } = useSelector((res) => res.basket);
@@ -109,6 +110,7 @@ const Order = () => {
                   </p>
                 </div>
                 <img src={mapImage} alt="map-image" className="w-full" />
+                {/* {<Map/>} */}
                 <div className="contact-map__body flex items-center gap-x-3 mt-4">
                   <img src={LocationImage} alt="Location image" />
                   <div className="texts">
