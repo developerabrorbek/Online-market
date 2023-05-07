@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Order = () => {
-  const { basketArr } = useSelector((res) => res.basket);
+  const { basketArr, basketCartTotalAmount } = useSelector((res) => res.basket);
   const [width, setWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", () => {
@@ -69,6 +69,10 @@ const Order = () => {
                     />
                   </label>
                 </form>
+                <div className="tatal-price flex justify-between mt-3">
+                    <h4 className="font-semibold text-[17px] leading-5">Total price</h4>
+                    <p className="font-semibold text-[17px] leading-5">{basketCartTotalAmount + 499}$</p>
+                </div>
               </div>
 
               <div className={`tel my-6 ${style}`}>
