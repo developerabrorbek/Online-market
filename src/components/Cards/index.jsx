@@ -1,7 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   addFavoriteProduct,
+  increaseExtraProduct,
+  decreaseExtraProduct,
   removeFavoriteProduct,
   removeProduct,
 } from "../../redux/slice";
@@ -11,7 +13,7 @@ export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   function toSingleProduct(id, e) {
-    if (!e.target.matches(".heart") && !e.target.matches(".trash") ) {
+    if (!e.target.matches(".heart") && !e.target.matches(".trash")) {
       navigate(`/single-product/${id}`);
     }
   }
@@ -20,6 +22,7 @@ export const ProductCard = ({ product }) => {
   if (pathname != "/selected") {
     content = (
       <svg
+        className="heart"
         width="23"
         height="20"
         viewBox="0 0 23 20"
@@ -35,10 +38,9 @@ export const ProductCard = ({ product }) => {
   } else
     content = (
       <svg
-      className="trash"
+        className="trash"
         onClick={(e) => {
           if (e.target.matches(".trash"))
-          console.log("trash")
             dispatch(removeFavoriteProduct(product));
         }}
         width="21"
@@ -54,8 +56,6 @@ export const ProductCard = ({ product }) => {
       </svg>
     );
 
-  const { favoriteArr } = useSelector((res) => res.favorite);
-  console.log(favoriteArr);
   function handleAddCart(product) {
     const element = document.getElementById(`${product.id}`);
     element.classList.toggle("text-red-500");
@@ -73,7 +73,7 @@ export const ProductCard = ({ product }) => {
       <div className="card-images relative flex justify-center mb-6">
         <img src={product.image} alt="Product image" className="h-[250px]" />
         <div
-          className="favorite absolute heart top-0 right-0 z-20 hover:opacity-70"
+          className="favorite absolute heart top-0 right-0 z-20 hover:opacity-70 w-6 h-6"
           id={product.id}
           onClick={() => handleAddCart(product)}
         >
@@ -136,18 +136,24 @@ export const BasketCard = ({ product }) => {
 
       <div className="card-actions flex justify-between items-center">
         <div className="count flex gap-x-4 items-center">
-          <button className="bg-[#FFCE7F] text-white text-[24px] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#f8bf63]">
+          <button
+            onClick={() => dispatch(decreaseExtraProduct(product))}
+            className="bg-[#FFCE7F] text-white text-[24px] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#f8bf63]"
+          >
             -
           </button>
-          <p>1</p>
-          <button className="bg-[#FFCE7F] text-white text-[24px] rounded-full   w-8 h-8 flex items-center justify-center hover:bg-[#f8bf63]">
+          <p>{product.productCount}</p>
+          <button
+            onClick={() => dispatch(increaseExtraProduct(product))}
+            className="bg-[#FFCE7F] text-white text-[24px] rounded-full   w-8 h-8 flex items-center justify-center hover:bg-[#f8bf63]"
+          >
             +
           </button>
         </div>
 
         <div className="total">
           <p className="font-semibold text-[15px]  leading-6 text-[#1C1C27]">
-            2600 $
+            {product.productCount * product.price} $
           </p>
         </div>
       </div>

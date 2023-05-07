@@ -8,14 +8,14 @@ import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import { useGetSingleProductQuery } from "../../redux/API";
 import Error from "../Error";
-import { useDispatch,} from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/slice";
 
 const SingleProduct = () => {
-  const dispatch = useDispatch()
-function addtoBasketHandler(product){
-  dispatch(addProduct(product))
-}
+  const dispatch = useDispatch();
+  function addtoBasketHandler(product) {
+    dispatch(addProduct(product));
+  }
 
   const { id } = useParams();
   const [width, setWidth] = useState(window.innerWidth);
@@ -83,15 +83,18 @@ function addtoBasketHandler(product){
               <ProductCard product={product} />
             </div>
             <div className="description rounded-[15px] overflow-hidden">
-              <div className="description-body rounded-[15px] bg-white shadow p-6 flex justify-between">
-                <h2 className="font-semibold text-[17px] leading-5">
-                  Description
-                </h2>
-                <img src={down} alt="down icon" />
+              <div className="description-body rounded-[15px] relative bg-[#F9F9F9] z-20 shadow-xl  ">
+                <div className="body flex justify-between rounded-[15px] bg-white shadow  px-6 py-6">
+                  <h2 className="font-semibold text-[17px] leading-5">
+                    Description
+                  </h2>
+                  <img src={down} alt="down icon" />
+                </div>
+                <p className="text  rounded-b-[15px] p-6">
+                  {product.description}
+                </p>
               </div>
-              <p className="text bg-[#F9F9F9] rounded-b-[15px] p-6">
-                {product.description}
-              </p>
+
               <div className="actions mt-6 flex flex-col gap-y-4">
                 <Link
                   to="/ordering"
@@ -100,8 +103,7 @@ function addtoBasketHandler(product){
                   Buy!
                 </Link>
                 <button
-                onClick={()=> addtoBasketHandler(product)}
-                  
+                  onClick={() => addtoBasketHandler(product)}
                   className="bg-[#101010] flex items-center justify-center gap-x-4 shadow rounded-[10px] text-white text-center py-[13px] w-[255px]"
                 >
                   <img src={basket} alt="Basket" />

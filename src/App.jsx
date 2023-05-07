@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
+import Ordered from "./pages/Ordered";
 import Products from "./pages/Products";
 import ServiceRequirements from "./pages/Service-requirements";
 import SingleProduct from "./pages/Single-product";
@@ -18,6 +19,7 @@ const App = () => {
           <Route element={<Home />} path="/" />
           <Route element={<Contacts />} path="/contacts" />
           <Route element={<Order />} path="/ordering" />
+          <Route element={<Ordered/>} path="/ordered"/>
           <Route element={<Favorites/>} path="/selected"/>
           <Route element={<Products />} path="/products/:category" />
           <Route

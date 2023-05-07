@@ -4,14 +4,17 @@ import MenuImage from "../../assets/burger.svg";
 import FavoriteImage from "../../assets/favorite.svg";
 import { useGetCategoriesQuery } from "../../redux/API.jsx";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 const navigate = useNavigate()
   function SelectChanger(e) {
     let value = e.target.value;
-    console.log(value);
     if (value) navigate(`/products/${value}`);
   }
+
+  const {basketCartTotal} = useSelector(res => res.basket)
+  const {favoriteCartTotal} = useSelector(res => res.favorite)
 
   const { data: categories } = useGetCategoriesQuery();
 
@@ -39,11 +42,13 @@ const navigate = useNavigate()
             </select>
           </form>
           <div className="header-actions flex gap-x-12 items-center">
-            <Link to="/selected" className="favorites-wrapper hidden md:block">
+            <Link to="/selected" className="favorites-wrapper relative hidden md:block">
               <img src={FavoriteImage} alt="Favorites" />
+              <div className=" absolute -top-3 -right-4 -z-10 bg-red-400 rounded-full flex items-center justify-center  w-6"><p className="text text-white">{favoriteCartTotal}</p></div>
             </Link>
-            <Link to="/basket" className="basket-wrapper">
+            <Link to="/basket" className="basket-wrapper relative">
               <img src={BasketImage} alt="Basket" />
+              <div className="amount  absolute -top-3 -right-4 -z-10 bg-[#FFA542] rounded-full flex items-center justify-center  w-6"><p className="text text-white ">{basketCartTotal}</p></div>
             </Link>
             <div className="menu md:hidden">
               <img src={MenuImage} alt="Burger image" />
