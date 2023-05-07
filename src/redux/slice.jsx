@@ -23,14 +23,17 @@ export const basketSlice = createSlice({
       }else{
         const tempProduct = {...action.payload, cartQuantity: 1};
         state.basketArr.push(tempProduct);
+        state.basketCartTotal += 1
+        state.basketCartTotalAmount += action.payload.price
         localStorage.setItem("basketArr",JSON.stringify(state.basketArr))
       }
     },
     removeProduct: (state, action) => {
       const itemIndex = state.basketArr.findIndex(item => item.id == action.payload.id);
       if(itemIndex >= 0){
-        console.log(itemIndex);
         state.basketArr.splice(itemIndex,1)
+        state.basketCartTotal -= 1
+        state.basketCartTotalAmount -= action.payload.price
         localStorage.setItem("basketArr",JSON.stringify(state.basketArr))
       }
     },
@@ -51,6 +54,8 @@ export const favoriteSlice = createSlice({
       }else{
         const tempProduct = {...action.payload, cartQuantity: 1};
         state.favoriteArr.push(tempProduct);
+        state.favoriteCartTotal += 1
+        state.favoriteCartTotalAmount += action.payload.price
         localStorage.setItem("favoriteArr",JSON.stringify(state.favoriteArr))
 
       }
@@ -59,6 +64,8 @@ export const favoriteSlice = createSlice({
       const itemIndex = state.favoriteArr.findIndex(item => item.id == action.payload.id);
       if(itemIndex >= 0){
         state.favoriteArr.splice(itemIndex,1)
+        state.favoriteCartTotal -= 1
+        state.favoriteCartTotalAmount -= action.payload.price
         localStorage.setItem("favoriteArr",JSON.stringify(state.favoriteArr))
       }
     },

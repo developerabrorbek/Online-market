@@ -3,7 +3,7 @@ import BasketImage from "../../assets/trash.svg";
 import MenuImage from "../../assets/burger.svg";
 import FavoriteImage from "../../assets/favorite.svg";
 import { useGetCategoriesQuery } from "../../redux/API.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
 const navigate = useNavigate()
@@ -39,12 +39,12 @@ const navigate = useNavigate()
             </select>
           </form>
           <div className="header-actions flex gap-x-12 items-center">
-            <div className="favorites-wrapper hidden md:block">
+            <Link to="/selected" className="favorites-wrapper hidden md:block">
               <img src={FavoriteImage} alt="Favorites" />
-            </div>
-            <div className="basket-wrapper">
+            </Link>
+            <Link to="/basket" className="basket-wrapper">
               <img src={BasketImage} alt="Basket" />
-            </div>
+            </Link>
             <div className="menu md:hidden">
               <img src={MenuImage} alt="Burger image" />
             </div>
