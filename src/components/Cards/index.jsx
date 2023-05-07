@@ -39,10 +39,6 @@ export const ProductCard = ({ product }) => {
     content = (
       <svg
         className="trash"
-        onClick={(e) => {
-          if (e.target.matches(".trash"))
-            dispatch(removeFavoriteProduct(product));
-        }}
         width="21"
         height="17"
         viewBox="0 0 21 17"
@@ -67,13 +63,17 @@ export const ProductCard = ({ product }) => {
   }
   return (
     <div
-      onClick={(e) => toSingleProduct(product.id, e)}
+      onClick={(e) => {
+        if (e.target.matches(".trash") || e.target.matches(".favorite")) {
+          dispatch(removeFavoriteProduct(product))
+        } else toSingleProduct(product.id, e);
+      }}
       className="card block bg-white rounded-[30px] shadow-sm p-6 cursor-pointer"
     >
       <div className="card-images relative flex justify-center mb-6">
         <img src={product.image} alt="Product image" className="h-[250px]" />
         <div
-          className="favorite absolute heart top-0 right-0 z-20 hover:opacity-70 w-6 h-6"
+          className="favorite absolute heart top-0 -right-2 z-20 hover:opacity-70 w-8 h-8"
           id={product.id}
           onClick={() => handleAddCart(product)}
         >
@@ -161,17 +161,23 @@ export const BasketCard = ({ product }) => {
   );
 };
 
-export const OrderCard = ({product}) =>{
+export const OrderCard = ({ product }) => {
   return (
     <div className="card flex items-center justify-between">
       <div className="body flex items-center gap-x-3">
-      <img src={product.image} alt="image" className="w-10 h-10"/>
-      <div className="text flex flex-col ">
-        <h4 className="font-medium text-[13px] leading-4 max-w-[220px]">{product.productCount} x {product.title}</h4>
-        <p className="price font-medium text-[13px] leading-4">{product.price} $</p>
+        <img src={product.image} alt="image" className="w-10 h-10" />
+        <div className="text flex flex-col ">
+          <h4 className="font-medium text-[13px] leading-4 max-w-[20px]">
+            {product.productCount} x {product.title}
+          </h4>
+          <p className="price font-medium text-[13px] leading-4">
+            {product.price} $
+          </p>
+        </div>
       </div>
-      </div>
-      <p className="all-price font-medium text-[13px] leading-5" >{product.price * product.productCount} $</p>
+      <p className="all-price font-medium text-[13px] leading-5">
+        {product.price * product.productCount} $
+      </p>
     </div>
-  )
-}
+  );
+};
