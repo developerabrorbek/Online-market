@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
 const ServiceRequirements = () => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
   window.addEventListener("resize", () => {
     setWidth(window.innerWidth);
   });
@@ -24,7 +24,7 @@ const ServiceRequirements = () => {
     <>
       <Header />
       <section className="service-requirements">
-        <div className="container mx-auto px-3">
+        <div className="container mx-auto px-3 max-w-[1110px]">
           <div className="service__inner pb-2">
             <ul className="service-items grid gap-y-5 md:gap-y-7">
               <li className="service-item shadow rounded-[30px] bg-white px-4 py-5">

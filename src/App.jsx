@@ -5,7 +5,7 @@ import Contacts from "./pages/Contacts";
 import Error from "./pages/Error";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
-import Order from "./pages/Order";
+import Order from "./pages/Ordering";
 import Ordered from "./pages/Ordered";
 import Products from "./pages/Products";
 import ServiceRequirements from "./pages/Service-requirements";

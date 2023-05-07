@@ -160,3 +160,18 @@ export const BasketCard = ({ product }) => {
     </div>
   );
 };
+
+export const OrderCard = ({product}) =>{
+  return (
+    <div className="card flex items-center justify-between">
+      <div className="body flex items-center gap-x-3">
+      <img src={product.image} alt="image" className="w-10 h-10"/>
+      <div className="text flex flex-col ">
+        <h4 className="font-medium text-[13px] leading-4 max-w-[220px]">{product.productCount} x {product.title}</h4>
+        <p className="price font-medium text-[13px] leading-4">{product.price} $</p>
+      </div>
+      </div>
+      <p className="all-price font-medium text-[13px] leading-5" >{product.price * product.productCount} $</p>
+    </div>
+  )
+}

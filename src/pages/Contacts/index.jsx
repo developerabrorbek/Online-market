@@ -31,7 +31,7 @@ const Contacts = () => {
       <Header />
       <section className="contact">
         <div className="container mx-auto px-3 max-w-[1110px]">
-          <div className="contact__inner grid lg:grid-cols-2 lg:gap-x-6 lg:px-12">
+          <div className="contact__inner grid lg:grid-cols-2 lg:w-[920px] lg:mx-auto lg:gap-x-12 lg:px-12">
             <div className="contact-map max-w-[760px] p-4 bg-white shadow rounded-[30px]">
               <h2 className="font-semibold text-[17px] leading-5 mb-5">
                 Our office
