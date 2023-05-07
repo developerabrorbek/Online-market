@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { BasketCard } from "../../components/Cards";
 import BasketFreeImage from "../../assets/free-basket.png";
+import mapImage from "../../assets/map.png";
+import LocationImage from "../../assets/locaiton.svg";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+
 
 const Basket = () => {
   const { basketArr } = useSelector((res) => res.basket);
@@ -25,12 +28,43 @@ const Basket = () => {
     <Header/>
       <section className="basket-section min-h-[60vh]">
         <div className="container mx-auto px-6">
-          <div className="basket-section__inner">
+          <div className="basket-section__inner grid gap-y-6 justify-center gap-x-6 md:grid-cols-2">
+            <div className="basket-main grid gap-y-6 ">
             <ul className="products grid gap-y-4">
               {basketArr.map((item) => (
                 <BasketCard product={item} key={item.id} />
               ))}
             </ul>
+            <div className="contact-map max-w-[634px] p-4 bg-white shadow rounded-[30px]">
+              <h2 className="font-semibold text-[17px] leading-5 mb-5">
+                Our office
+              </h2>
+              <img src={mapImage} alt="map-image" className="w-full" />
+              <div className="contact-map__body flex items-center gap-x-3 mt-4">
+                <img src={LocationImage} alt="Location image" />
+                <div className="texts">
+                  <h3 className="font-medium text-[15px] leading-[18px]">
+                    Аксай-3а, 62ф, Алматы, Казахстан
+                  </h3>
+                  <p className="font-medium text-[13px] leading-4 text-[#838383]">
+                    3 этаж 35 кабинет
+                  </p>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div className="action max-w-[360px] bg-white pt-6 rounded-[30px] shadow-xl  h-fit">
+              <div className="text flex justify-between ites-center px-5">
+                <h2 className="font-semibold text-[15px] leading-[18px]">All price</h2>
+                <p className="font-medium text-[15px] leading-[18px]">1212 $</p>
+              </div>
+              <Link
+                  to="/ordering"
+                  className="bg-[#101010] block shadow rounded-[30px] shadow-2xl text-white text-center py-[13px] mt-6"
+                >
+                  Buy now!
+                </Link>
+            </div>
           </div>
         </div>
       </section>
