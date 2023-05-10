@@ -69,6 +69,13 @@ const SingleProduct = () => {
     );
   } else content = <Footer />;
 
+  const downIcon = document.querySelector(".down-image");
+  const description = document.querySelector(".description-body");
+  const handleAccordion = (evt) => {
+    description.classList.toggle("hidden");
+    downIcon.classList.toggle("rotate-180");
+  };
+
   return (
     <>
       <Header />
@@ -82,15 +89,17 @@ const SingleProduct = () => {
             <div className="product">
               <ProductCard product={product} />
             </div>
-            <div className="description rounded-[15px] overflow-hidden">
-              <div className="description-body rounded-[15px] relative bg-[#F9F9F9] z-20 shadow-xl  ">
-                <div className="body flex justify-between rounded-[15px] bg-white shadow  px-6 py-6">
-                  <h2 className="font-semibold text-[17px] leading-5">
-                    Description
-                  </h2>
-                  <img src={down} alt="down icon" />
-                </div>
-                <p className="text  rounded-b-[15px] p-6">
+            <div className="description transition-all rounded-[15px] overflow-hidden">
+              <div onClick={(e) => handleAccordion(e)} className="accordion flex justify-between rounded-[15px] bg-white shadow  px-6 py-6">
+                <h2 className="font-semibold text-[17px] leading-5">
+                  Description
+                </h2>
+                <img src={down} alt="down icon" className="down-image" />
+              </div>
+              <div
+                className="description-body  hidden rounded-b-[15px] -top-3 relative bg-[#F9F9F9] z-20 shadow-xl  "
+              >
+                <p className="description-text text rounded-b-[15px] p-6">
                   {product.description}
                 </p>
               </div>
